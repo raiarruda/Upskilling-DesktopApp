@@ -1,9 +1,9 @@
 ﻿using System;
-
-public class Class1
+namespace Estacionamento.Entidades
 {
-	public Class1()
-	{
-		float Minuto = 0.50f
-	}
+    public class Valores
+    {
+         decimal Minuto { get; } = 0.50m;
+
+    }
 }

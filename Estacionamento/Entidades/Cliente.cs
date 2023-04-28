@@ -1,12 +1,16 @@
 ﻿using System;
-
-public class Class1
+namespace Estacionamento.Entidades
 {
-	public Class1()
-	{
-		Guid Id = Guid.NewGuid();
-		string Nome { get; set; }
-		int Telefone { get; set; }
-	
-	}
+    public class Cliente
+    {
+
+
+        Guid Id = Guid.NewGuid();
+        string Nome { get; set; }
+        int Telefone { get; set; }
+
+
+    }
+
+
 }
