@@ -82,45 +82,51 @@ namespace Estacionamento.Utilitarios
         public List<T> Buscar()
         {
             List<T> entidades = new List<T>();
-            using var conn = new NpgsqlConnection(connString);
-            conn.Open();
-            using var cmd = new NpgsqlCommand($"SELECT * FROM {typeof(T).Name.ToLower()}s;", conn);
-            using var reader = cmd.ExecuteReader();
-            while (reader.Read())
+            using (var conn = new NpgsqlConnection(connString))
             {
-                var entidade = Activator.CreateInstance(typeof(T));
-                if (entidade == null) return new List<T>();
-
-                foreach (var pi in entidade.GetType().GetProperties())
+                conn.Open();
+                using (var cmd = new NpgsqlCommand($"SELECT * FROM {typeof(T).Name.ToLower()}s;", conn))
                 {
-                    var piSet = entidade.GetType().GetProperty(pi.Name);
-                    if (piSet == null) continue;
-                    piSet.SetValue(entidade, reader[pi.Name]);
-                }
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var entidade = Activator.CreateInstance(typeof(T));
+                            if (entidade == null) return new List<T>();
 
-                entidades.Add((T)entidade);
+                            foreach (var pi in entidade.GetType().GetProperties())
+                            {
+                                var piSet = entidade.GetType().GetProperty(pi.Name);
+                                if (piSet == null) continue;
+                                piSet.SetValue(entidade, reader[pi.Name]);
+                            }
+
+                            entidades.Add((T)entidade);
+                        }
+                        return entidades;
+                    }
+                }
             }
-            return entidades;
         }
 
         public void Apagar(T entidade)
         {
             if (entidade == null) return;
 
-            using var conn = new NpgsqlConnection(connString);
-            conn.Open();
-            using var cmd = new NpgsqlCommand("DELETE FROM clientes WHERE id = @id;", conn);
+            using (var conn = new NpgsqlConnection(connString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand("DELETE FROM clientes WHERE id = @id;", conn))
+                {
 
-            var valorId = buscaValorIdObj(entidade);
-
-            if (valorId == null)
-                throw new Exception("O valor da identidade não pode ser null");
-
-            cmd.Parameters.AddWithValue("id", valorId);
-            cmd.ExecuteNonQuery();
+                    var valorId = buscaValorIdObj(entidade) ?? throw new Exception("O valor da identidade não pode ser null");
+                    cmd.Parameters.AddWithValue("id", valorId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
-        private object? buscaValorIdObj(T entidade)
+        private object buscaValorIdObj(T entidade)
         {
             if (entidade == null) return null;
 
@@ -136,3 +142,4 @@ namespace Estacionamento.Utilitarios
             return valorId;
         }
     }
+}

@@ -72,7 +72,6 @@
             this.Controls.Add(this.btnVeiculo);
             this.Controls.Add(this.btnCliente);
             this.Name = "PrincipalForm";
-            this.Text = "Form1";
             this.ResumeLayout(false);
 
         }

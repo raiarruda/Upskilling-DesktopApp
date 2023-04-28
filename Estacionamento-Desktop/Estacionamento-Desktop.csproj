@@ -50,9 +50,6 @@
     <Compile Include="Entities\Valores.cs" />
     <Compile Include="Entities\veiculo.cs" />
     <Compile Include="Entities\Venda.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="ClienteForm.Designer.cs">
       <DependentUpon>ClienteForm.cs</DependentUpon>
     </Compile>

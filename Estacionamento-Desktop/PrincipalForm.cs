@@ -20,7 +20,7 @@ namespace Estacionamento_Desktop
         private void button1_Click(object sender, EventArgs e)
         {
             var cliente = new ClienteForm();
-            cliente.Show();
+            //cliente.Show();
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

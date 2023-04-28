@@ -9,6 +9,6 @@ namespace Estacionamento.Utilitarios
 
     public class IdentidadeAttribute : Attribute
     {
-        public string NomeNoBancoDeDados { get; set; } = default!;
+        public string NomeNoBancoDeDados { get; set; } = default;
     }
 }

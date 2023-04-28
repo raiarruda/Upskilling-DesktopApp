@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Estacionamento.Repositorios
 {
-    internal class ClienteRepositorio
+    public class ClienteRepositorio
     {
+
     }
 }
