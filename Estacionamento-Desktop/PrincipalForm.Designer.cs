@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnCliente = new System.Windows.Forms.Button();
             this.btnVeiculo = new System.Windows.Forms.Button();
             this.btnVenda = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.SuspendLayout();
             // 
             // btnCliente
@@ -59,9 +61,14 @@
             this.btnVenda.Name = "btnVenda";
             this.btnVenda.Size = new System.Drawing.Size(290, 217);
             this.btnVenda.TabIndex = 2;
-            this.btnVenda.Text = "Venda";
+            this.btnVenda.Text = "Operação";
             this.btnVenda.UseVisualStyleBackColor = true;
             this.btnVenda.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // PrincipalForm
             // 
@@ -81,6 +88,7 @@
         private System.Windows.Forms.Button btnCliente;
         private System.Windows.Forms.Button btnVeiculo;
         private System.Windows.Forms.Button btnVenda;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 

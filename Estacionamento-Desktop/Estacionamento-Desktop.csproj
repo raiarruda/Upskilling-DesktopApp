@@ -100,5 +100,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Estacionamento\Estacionamento.csproj">
+      <Project>{433D2552-5F55-4174-A354-91B4EA0A4A59}</Project>
+      <Name>Estacionamento</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

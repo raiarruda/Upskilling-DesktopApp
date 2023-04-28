@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace Estacionamento.Entidades
 {
     public class Cliente
@@ -6,10 +8,20 @@ namespace Estacionamento.Entidades
 
 
         Guid Id = Guid.NewGuid();
-        string Nome { get; set; }
-        int Telefone { get; set; }
+        public string Nome { get; set; }
+        public string Telefone { get; set; }
 
+        static List<Cliente> clientes = new List<Cliente> { };
 
+        public static List<Cliente> Todos()
+        {
+            return clientes;
+        }
+
+        public void Salvar()
+        {
+            clientes.Add(this);
+        }
     }
 
 
