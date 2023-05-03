@@ -49,13 +49,12 @@
     <Compile Include="Repositorios\ClienteRepositorio.cs" />
     <Compile Include="Repositorios\OperacaoRepositorio.cs" />
     <Compile Include="Repositorios\VeiculoRepositorio.cs" />
+    <Compile Include="Servicos\ClienteService.cs" />
     <Compile Include="Utilitarios\PersistenciaPostgres.cs" />
     <Compile Include="Utilitarios\IdentidadeAttribute.cs" />
     <Compile Include="Utilitarios\IPersistencia.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Servicos\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <PackageReference Include="Npgsql">
       <Version>7.0.4</Version>

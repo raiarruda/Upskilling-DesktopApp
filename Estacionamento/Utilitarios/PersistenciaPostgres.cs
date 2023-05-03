@@ -24,7 +24,7 @@ namespace Estacionamento.Utilitarios
             {
                 conn.Open();
 
-                var tipoEntidade = typeof(T).GetType();
+                var tipoEntidade = entidade.GetType();
                 var nomeTabela = tipoEntidade.Name.ToLower() + "s";
                 var campos = string.Join(",", tipoEntidade.GetProperties().Select(pi => pi.Name.ToLower()));
                 var valores = string.Join(",", tipoEntidade.GetProperties().Select(pi => "@" + pi.Name));

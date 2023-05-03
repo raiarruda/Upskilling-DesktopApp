@@ -7,21 +7,12 @@ namespace Estacionamento.Entidades
     {
 
 
-        Guid Id = Guid.NewGuid();
         public string Nome { get; set; }
         public string Telefone { get; set; }
 
         static List<Cliente> clientes = new List<Cliente> { };
 
-        public static List<Cliente> Todos()
-        {
-            return clientes;
-        }
 
-        public void Salvar()
-        {
-            clientes.Add(this);
-        }
     }
 
 

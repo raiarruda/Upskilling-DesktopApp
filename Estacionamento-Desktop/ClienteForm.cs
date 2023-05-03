@@ -1,4 +1,5 @@
 ﻿using Estacionamento.Entidades;
+using Estacionamento.Servicos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,16 +14,13 @@ namespace Estacionamento_Desktop
 {
     public partial class ClienteForm : Form
     {
+
+        ClienteService clienteService = new ClienteService();
+
         public ClienteForm()
         {
             InitializeComponent();
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         private void ClienteForm_Load(object sender, EventArgs e)
         {
@@ -31,33 +29,30 @@ namespace Estacionamento_Desktop
 
         private void btnAdicionarCliente_Click(object sender, EventArgs e)
         {
-            Cliente cliente = new Cliente{
+            Cliente cliente = new Cliente
+            {
                 Nome = txtNome.Text,
                 Telefone = txtTelefone.Text
-                };
+            };
 
-            cliente.Salvar();
+            clienteService.SalvarCliente(cliente);
 
-            foreach (Cliente c in  Cliente.Todos()) {
-                Console.WriteLine(c.Nome);
-                    }
-
-             carregarDados();
+            carregarDados();
         }
 
         private void carregarDados()
         {
-                        BindingSource bindingSource = new BindingSource(); 
-            bindingSource.DataSource = Cliente.Todos();
+            BindingSource bindingSource = new BindingSource();
+            bindingSource.DataSource = clienteService.CarregarClientes();
 
             dataGridView1.DataSource = bindingSource;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnVoltar_Click(object sender, EventArgs e)
         {
-            PrincipalForm p = new PrincipalForm();;
+            PrincipalForm p = new PrincipalForm(); ;
             p.Show();
-            this.Close();
+            Close();
         }
     }
 }
